@@ -1,0 +1,61 @@
+
+<form #frm="ngForm" (ngSubmit)="(submit(frm))">
+<div class="container">
+<div class="form-group">
+<label for="name">
+Name:
+</label>
+<input class="form-control" type="text" name="name"  pattern="[a-zA-Z]+[ ]*[a-zA-Z]*[ ]*[a-zA-Z]*" ngModel required #nameUser="ngModel">
+</div>
+
+
+<div *ngIf="nameUser?.touched" >
+<div *ngIf="nameUser.errors?.required">
+<div class="alert alert-danger">Name is required!</div>
+</div></div>
+<div *ngIf="nameUser?.touched" >
+<div *ngIf="nameUser.errors?.pattern">
+<div class="alert alert-danger">Name can contain only alphabets.</div>
+</div></div>
+
+
+
+<div class="form-group">
+<label for="name">
+Email:
+</label>
+<input class="form-control" type="text" name="email"  ngModel  required #emailUser="ngModel">
+</div>
+
+<div *ngIf="emailUser?.touched" >
+<div *ngIf="emailUser.errors?.required">
+<div class="alert alert-danger">Email is required!</div>
+</div></div>
+<div *ngIf="emailUser?.touched" >
+<div *ngIf="emailUser.errors?.pattern">
+<div class="alert alert-danger">Email is invalid!</div>
+</div></div>
+
+
+<div class="form-group">
+<label for="name">
+Contact:
+</label>
+<input class="form-control" type="text" name="contact"  pattern="[0-9]*" ngModel required #contactUser="ngModel">
+</div>
+
+
+<div *ngIf="contactUser?.touched" >
+<div *ngIf="contactUser.errors?.required">
+<div class="alert alert-danger">Contact required!</div>
+</div></div>
+<div *ngIf="contactUser?.touched" >
+<div *ngIf="contactUser.errors?.pattern">
+<div class="alert alert-danger">Contact can contain only numerics (0-9)</div>
+</div></div>
+
+
+
+<button type="submit" name="submit" class="btn btn-success" >Submit</button>
+</div>
+</form>   
